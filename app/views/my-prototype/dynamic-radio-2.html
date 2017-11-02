@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Check out this crazy code yo!
+Who do you drink with?
 {% endblock %}
 
 {% block head %}
@@ -26,7 +26,7 @@ Check out this crazy code yo!
                 </ul>
             </div>
             
-            <h1 class="heading-large">What tax class is your vehicle?</h1>
+            <h1 class="heading-large">Who do you drink with?</h1>
 
             <form class="form">
 
@@ -38,21 +38,21 @@ Check out this crazy code yo!
 
                     <fieldset>
 
-                        <legend class="visually-hidden">What tax class is your vehicle?</legend>
+                        <legend class="visually-hidden">Who do you drink with?</legend>
 
                         <!--Because there were 3 different options on the previous page we want to show 3 different options based on your selection on the previous page - here we put them inside a container div, give them a class and hide them all until called upon-->
                         <div class="petrolTax" style="display: none;">
                             <div class="multiple-choice">
-                                <input id="taxClass-1" type="radio" name="taxClass" value="Petrol1">
-                                <label class="block-label" for="taxClass-1" id="taxClass-1-label">Petrol1</label>
+                                <input id="taxClass-1" type="radio" name="taxClass" value="With Friends">
+                                <label class="block-label" for="taxClass-1" id="taxClass-1-label">With Friends</label>
                             </div>
                             <div class="multiple-choice">
-                                <input id="taxClass-2" type="radio" name="taxClass" value="PetrolPetrol2">
-                                <label class="block-label" for="taxClass-2" id="taxClass-2-label">Petrol2</label>
+                                <input id="taxClass-2" type="radio" name="taxClass" value="PetrolAlone">
+                                <label class="block-label" for="taxClass-2" id="taxClass-2-label">Alone</label>
                             </div>
                             <div class="multiple-choice">
-                                <input id="taxClass-3" type="radio" name="taxClass" value="Petrol3">
-                                <label class="block-label" for="taxClass-3" id="taxClass-3-label">Petrol3</label>
+                                <input id="taxClass-3" type="radio" name="taxClass" value="Alone with cat">
+                                <label class="block-label" for="taxClass-3" id="taxClass-3-label">Alone with cat</label>
                             </div>
                         </div>
                         
