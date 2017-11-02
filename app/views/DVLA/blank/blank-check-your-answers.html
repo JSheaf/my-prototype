@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Confirm your answers
+{% endblock %}
+
+{% block head %}
+{% include "includes/head.html" %}
+{% include "includes/scripts.html" %}
+{% endblock %}
+
+{% import "templates/button.html" as button %}
+
+{% block content %}
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    {% include "includes/buttons/back.html" %}
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Confirm your answers</h1>
+            <p>If you change a response, you may have to re-answer some questions</p>
+
+            <h2 class="heading-medium margin-top-2">Questions answered</h2>
+
+            <ul class="list-summary margin-bottom-2">
+
+                <!--Copy and paste this 'list item' for as many questions you have answers for, then change the content, link and amend the content of 'change'-->
+                <li class="list-summary-item basicBinary">
+                    <span>Which patterns do you want to see?</span>
+                    <span><strong><span class="basic-binary"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/basic-binary?change=true">Change <span class="visuallyhidden">which patterns you want to see</span></a></span>
+                </li>
+
+            </ul> 
+            {{ button.input(id='continue', name='continue', class='button', type='button', value='Confirm') }}
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+
+    // Basic binary
+    if  (!member.questions.binary) {
+        $('.basicBinary').remove();
+    } else {
+        $('#basic-binary').html(member.questions.binary);
+    }
+    
+    $(".button").click(function(){
+        // Enter function name here
+        next();
+    });
+    //then we define the function of next to route to the next page
+    function next() {        
+        go('/my-prototype/success');
+    }
+</script>
+{% endblock %}

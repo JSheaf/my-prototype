@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Confirm your answers
+{% endblock %}
+
+{% block head %}
+{% include "includes/head.html" %}
+{% include "includes/scripts.html" %}
+{% endblock %}
+
+{% import "templates/button.html" as button %}
+
+{% block content %}
+<main id="content" role="main">
+    {% include "includes/phase_banner_alpha.html" %}
+    {% include "includes/buttons/back.html" %}
+    <div class="grid-row">
+        <div class="column-full">
+            <h1 class="heading-large">Confirm your answers</h1>
+            <p>If you change a response, you may have to re-answer some questions</p>
+
+            <h2 class="heading-medium margin-top-2">Questions answered</h2>
+
+            <ul class="list-summary margin-bottom-2">
+
+                <!--Copy and paste this 'list item' for as many questions you have answers for, then change the content, link and amend the content of 'change'-->
+                <li class="list-summary-item basicBinary">
+                    <span>What do you prefer?</span>
+                    <span><strong><span id="basic-binary"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/basic-binary?change=true">Change <span class="visuallyhidden">which do you prefer, coffee or whisky</span></a></span>
+                </li>
+                
+                <li class="list-summary-item favouriteCoffee">
+                    <span>What is your favourite type?</span>
+                    <span><strong><span id="favourite-coffee"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/basic-input?change=true">Change <span class="visuallyhidden">What is your favourite type of coffee</span></a></span>
+                </li>
+                  
+                <li class="list-summary-item favouriteWhisky">
+                    <span>Your favourite whisky</span>
+                    <span><strong><span id="favourite-whisky"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/basic-multiple-choice-radio?change=true">Change <span class="visuallyhidden">your favourite whisky</span></a></span>
+                </li>
+                
+                <li class="list-summary-item advancedRadioDisclosure">
+                    <span>Do you want an email receipt?</span>
+                    <span><strong><span id="email-choice" style="width: 100%;"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/radio-disclosure?change=true">Change <span class="visuallyhidden">email receipt choice</span></a></span>
+                </li>   
+
+                <li class="list-summary-item emailAddress">
+                    <span>Email address</span>
+                    <span><strong><span id="email-address" style="width: 100%;"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/radio-disclosure?change=true">Change <span class="visuallyhidden">email address</span></a></span>
+                </li> 
+                
+                 <li class="list-summary-item advancedDynamicRadio1">
+                    <span>Fuel Type</span>
+                    <span><strong><span id="fuelType" style="width: 100%;"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/dynamic-radio-1?change=true">Change <span class="visuallyhidden">fuel type</span></a></span>
+                </li> 
+
+                <li class="list-summary-item advancedDynamicRadio2">
+                    <span>Tax class</span>
+                    <span><strong><span id="taxClass" style="width: 100%;"></span></strong></span>
+                    <span class="list-summary-item-right"><a class="button-change" href="/my-prototype/dynamic-radio-2?change=true">Change <span class="visuallyhidden">tax class</span></a></span>
+                </li>
+
+            </ul> 
+            {{ button.input(id='continue', name='continue', class='button', type='button', value='Confirm') }}
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+
+    // Basic binary
+    if  (!member.questions.binary) {
+        $('.basicBinary').remove();
+    } else {
+        $('#basic-binary').html(member.questions.binary);
+    }
+    
+    // Favourite coffee
+    if  (!member.questions.coffeeFavourite) {
+        $('.favouriteCoffee').remove();
+    } else {
+        $('#favourite-coffee').html(member.questions.coffeeFavourite);
+    }
+    // Favourite whisky
+    if  (!member.questions.whiskyFavourite) {
+        $('.favouriteWhisky').remove();
+    } else {
+        $('#favourite-whisky').html(member.questions.whiskyFavourite);
+    }
+    
+    // Advanced radio disclosure
+    if  (!member.questions.emailChoice) {
+        $('.advancedRadioDisclosure').remove();
+    } else {
+        $('#email-choice').html(member.questions.emailChoice);}
+
+    // Email address
+    if  (!member.questions.email) {
+        $('.emailAddress').remove();
+    } else {
+        $('#email-address').html(member.questions.email);
+    }
+    
+    //dynamic radio buttons
+    if  (!member.questions.fuelType) {
+        $('.advancedDynamicRadio1').remove();
+    } else {
+        $('#fuelType').html(member.questions.fuelType);
+    }
+
+    if  (!member.questions.taxClass) {
+        $('.advancedDynamicRadio2').remove();
+    } else {
+        $('#taxClass').html(member.questions.taxClass);
+    }
+    
+    $(".button").click(function(){
+        // Enter function name here
+        next();
+    });
+    //then we define the function of next to route to the next page
+    function next() {        
+        go('/my-prototype/success');
+    }
+</script>
+{% endblock %}

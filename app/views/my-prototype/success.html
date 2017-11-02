@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Success!
+{% endblock %}
+
+{% block head %}
+{% include "includes/head.html" %}
+{% include "includes/scripts.html" %}
+{% endblock %}
+
+{% import "templates/button.html" as button %}
+
+{% block content %}
+<main id="content" role="main">
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <div class="govuk-box-highlight">
+                <h1 class="bold-large banner-header">Success!</h1>
+            </div>
+
+            <h2 class="heading-medium">You've made your first prototype!</h2>
+            
+            
+            
+            <p>By yourself a drink</p>
+            
+            {{ button.input(id='continue', name='continue', class='button', type='button', value='Return to start') }}
+        </div>
+    </div>
+
+</main>
+<script type="text/javascript">
+
+    $(".button").click(function(){
+        // Enter function name here
+        validate();
+    });
+
+    function validate() { 
+        member.clear();
+        go('/my-prototype/start');
+    }
+
+</script>
+{% endblock %}
